@@ -1,0 +1,134 @@
+extends ../layouts/basic
+
+block variablesLang
+    include ./_variablesLang.jade
+
+block variables
+    - var pageTitle = 'FAQ - Apache ECharts'
+
+block extra_head
+    title FAQ - Apache ECharts
+
+block content
+    nav(class='navbar navbar-default navbar-fixed-top')
+        include ./nav
+
+    .page-main
+        .page-info
+            .container
+                h1 FAQ
+                p Frequently asked questions
+                p.page-info-echarts Apache ECharts<sup>TM</sup>
+
+        .page-content.single-page#faq-page
+            .page-nav
+                h4 Topics
+                ul
+
+            .page-detail
+                h2#ask-questions General Questions
+                h3 What to do if you have technical problem?
+                p 1) It is recommended that you read the navigation on the left side of the <a href="/en/option.html">option manual</a> before you ask questions. In the option manual, you can find out what configuration items does ECharts have. And you can find under the relevant components whether there are configuration items that can implement the functions you need.
+                p 2) Browse FAQ questions on this page.
+                p 3) Create a simple example to reproduce your problem on <a href="/examples/en/editor.html">Official Editor</a>, <a href="https://codepen.io/Ovilia/pen/dyYWXWM">CodePen</a>, <a href="https://codesandbox.io/s/echarts-basic-example-template-mpfz1s">CodeSandbox</a> or <a href="https://jsfiddle.net/plainheart/e46ozpqj/7/">JSFiddle</a>. If you can't use the code to describe the requirements, you can try to provide a design draft or draw a sketch.
+                p 4) Ask questions on <a href="https://stackoverflow.com">stackoverflow</a> and attach the example link.
+
+
+                h3 Is ECharts free to use?
+                p Yes, ECharts is open-sourced under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.
+
+                h2#axis Axis
+                h3 What should I do if the axis label doesn't have enough space?
+                p You can use <a href="/en/option.html#xAxis.interval">interval</a> to control how many labels are displayed,  set it to <code>0</code> to display all labels.
+                p Or you can set <a href="/en/option.html#yAxis.axisLabel.rotate">axisLabel.rotate</a> to rotate the label a certain angle.
+
+                h3 Why does it not work when you want to put the axis on the right side?
+                p You need to set <a href="/en/option.html#yAxis.axisLine.onZero">onZero</a> to <code>false</code>.
+
+                h3 How do I force the first / last label of the axis to be displayed?
+                p Both <a href="/en/option.html#xAxis.axisLabel.showMinLabel">axisLabel.showMinLabel</a> and <a href="/en/option.html#xAxis.axisLabel.showMaxLabel">axisLabel.showMaxLabel</a> are supported since ECharts version 3.5.2. It can be used to control whether the first / last tags are forced to display.
+
+
+                h2#legend legend
+                h3 What should I do if the legend area overlapped on the chart?
+                p You can set the <a href="/en/option.html#grid">grid</a> to control the position of the chart area. For example, Set a larger <code>grid.top</code> to move drawing area down.
+                p We are planning to make the layout smarter in the future versions.
+
+
+                h2#line-chart line-chart
+                h3 The ticks on the coordinate axis seems different with the data?
+                p Check if you set the <code>stack</code>. You should remove it if you don't want to make a stack line chart.
+
+
+
+                h2#bar-chart bar-chart
+                h3 Why does the y-axis scale disappear when the values are small?
+                p Version 3.5 of ECharts has been fixed this issue.
+
+
+
+                h2#map-chart map-chart
+                h3 Province names overlap on the chart. How to modify the location of the names?
+                p You can modify the <code>cp</code> coordinates of the corresponding province in the map file (JS or JSON), or modify the map data that has been loaded by <code>echarts.getMap('china')</code>.
+                p For more details, please refer to <a href="https://github.com/apache/echarts/issues/4379#issuecomment-257765948">GitHub</a>.
+
+                h3 Where can I download maps from other countries?
+                p Map information for other countries can be downloaded from <a href="https://github.com/echarts-maps/echarts-countries-js">here</a>.
+
+
+                h3 How can I get the zoom event of a map?
+                p First, you need to set the series's <a href="/en/option.html#series-map.roam">roam</a> to <code>true</code> and then listen for the <code>'georoam'</code> event. Such as:
+                pre
+                    code
+                        | myChart.on('georoam', function (params) {
+                        |    console.log(params);
+                        | });
+
+                h3 How to make my custom map?
+                p The ECharts map is <a href="https://github.com/apache/echarts/blob/8eeb7e5abe207d0536c62ce1f4ddecc6adfdf85e/src/util/mapData/rawData/encode.js">additionally encoded</a> from original coordinates. You can use the <a href="https://github.com/giscafer/mapshaper-plus">mapshaper-plus tool</a> to upload a custom geojson file and then generate a map file that can be used in Echarts.
+
+
+                h2#baidu-map baidu-map
+                h3 How to use ECharts with Baidu Map?
+                ol
+                    li Include <code>echarts.js</code>, <code>bmap.js</code> and <code>https://api.map.baidu.com/api?v=3.0&ak=Here is the access key you obtained on the Baidu development platform</code>.
+                    li Set <code>bmap</code> in <code>option</code>，You can refer to this <a href="/examples/en/editor.html?c=effectScatter-bmap">example</a>.
+                    li If you need to get a Baidu map instance, you can use <code>chart.getModel().getComponent('bmap').getBMap()</code>，and then make do settings based on <a href="https://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html">Baidu Maps API</a> .
+
+
+
+                h2#gauge-chart gauge-chart
+                h3 How to set the dashboard color?
+                p You can use <a href="/en/option.html#series-gauge.axisLine.lineStyle.color">axisLine.lineStyle.color</a>.
+
+
+
+                h2#event Event processing
+                h3 How do I get events such as chart clicks?
+                p Read the <a href="/handbook/en/concepts/event">official tutorial</a>. The types of events supported by ECharts can be found in the <a href="/en/api.html#events">related API</a>.
+
+
+
+                h2#others others
+                h3 Why is the chart not displayed?
+                p You can check the following situations：
+                ul
+                    li Whether <code>echarts.js</code> is loaded normally.
+                    li Whether<code>echarts</code>  variable exists.
+                    li Whether the DOM container has a width or height when calling <code>echarts.init</code>.
+
+                h3 Why does the chart not work correctly when using ECharts in Vue?
+                ul
+                    li If you are using Vue 3, avoid using <code>reactive</code> and <code>ref</code>.
+                    li If you are using Vue 2, avoid declaring the ECharts instance object in the <code>data</code> function or using the <code>Vue.observable</code> API.
+                p All of the above will cause the ECharts instance object to be proxied as a reactive object, which may affect the access to the properties of inner models of ECharts and bring some unexpected issues and lousy performance.
+                p The suggestion is to declare the ECharts instance object as a normal variable, or use <code>shallowRef</code> / <code>shallowReactive</code> / <code>markRaw</code> API to prevent the instance object from being proxied.
+                p See also <a href="https://github.com/apache/echarts/issues/17723#issuecomment-1268311307" target="blank">#17723</a> and <a href="https://vuejs.org/api/reactivity-advanced.html#markraw" target="_blank">the usage caution from Vue documentation</a>.
+
+                h3 Are there more resources for learning ECharts?
+                p Please refer to <a href="https://github.com/ecomfe/awesome-echarts" target="blank">awesome-echarts</a> for more related projects and resources.
+
+                include ../components/inner-footer
+block extra_js
+    script(type='text/javascript').
+        document.getElementById('nav-doc').className = 'active';

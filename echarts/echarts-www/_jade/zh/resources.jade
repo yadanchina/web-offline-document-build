@@ -1,0 +1,28 @@
+extends ../layouts/basic
+
+block variables
+    - var pageTitle = '更多资源'
+
+block extra_head
+    title 更多资源 - Apache ECharts
+
+block content
+    nav(class='navbar navbar-default navbar-fixed-top', role="navigation")
+        include ../components/nav
+
+    .page-main
+        .page-info
+            .container
+                h1 更多资源
+                p.page-info-echarts Apache ECharts<sup>TM</sup>
+
+        .page-content
+            .page-nav
+            .container
+                p <a target="_blank" href="https://github.com/ecomfe/awesome-echarts">github.com/ecomfe/awesome-echarts</a> 项目提供了完整的资源列表，欢迎了解及补充。
+
+        include ../components/footer
+
+block extra_js
+    script(type='text/javascript').
+        document.getElementById('nav-resources').className = 'active';

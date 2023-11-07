@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="/fastly.jsdelivr.net/npm" />
+    <link rel="shortcut icon" href="/en/images/favicon.png" />
+    <script src="lib/esl.js"></script>
+    <script src="lib/uglifyjs.js"></script>
+
+    <style type="text/css">
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+      }
+      #log {
+        width: 700px;
+        max-width: 100vw;
+        flex-grow: 1;
+        padding: 0 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        text-align: left;
+        line-height: 1.2;
+        font-size: 16px;
+        word-break: break-word;
+        overflow-y: auto;
+        scrollbar-width: thin;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="tip">Building...</h1>
+    <div id="log"></div>
+
+    <script>
+      var BUILD_CONFIG = {};
+      if (location.search) {
+        var searchParams = new URLSearchParams(location.search);
+        searchParams.forEach(function (value, key) {
+          // for XSS
+          BUILD_CONFIG[key.toLowerCase()] = value.replace(/[^\w-,.]/g, "");
+        });
+      }
+
+      // avoid using 'latest' as it may fall back to previous version
+      // when a file doesn't exist in current main version
+      BUILD_CONFIG.version = BUILD_CONFIG.version || "5";
+
+      require.config({
+        paths: {
+          rollup: "lib/rollup.browser",
+          transformDev: "lib/transform-dev-bundle",
+        },
+        urlArgs: "v=5",
+      });
+
+      require(["build"]);
+    </script>
+  </body>
+</html>

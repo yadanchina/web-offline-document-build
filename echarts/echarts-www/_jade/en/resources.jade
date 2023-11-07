@@ -1,0 +1,28 @@
+extends ../layouts/basic
+
+block variables
+    - var pageTitle = 'More Resources'
+
+block extra_head
+    title More Resources - Apache ECharts
+
+block content
+    nav(class='navbar navbar-default navbar-fixed-top', role="navigation")
+        include ./nav
+
+    .page-main
+        .page-info
+            .container
+                h1 More Resources
+                p.page-info-echarts Apache ECharts<sup>TM</sup>
+
+        .page-content
+            .page-nav
+            .container
+                p <a target="_blank" href="https://github.com/ecomfe/awesome-echarts">github.com/ecomfe/awesome-echarts</a> project provides a full list of these resources. Please check it out and add more as you know.
+
+        include ../components/footer
+
+block extra_js
+    script(type='text/javascript').
+        document.getElementById('nav-resources').className = 'active';

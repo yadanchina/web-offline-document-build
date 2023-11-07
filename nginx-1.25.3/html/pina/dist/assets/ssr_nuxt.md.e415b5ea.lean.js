@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,S as o}from"./chunks/framework.7ffc5276.js";const E=JSON.parse('{"title":"Nuxt.js","description":"","frontmatter":{},"headers":[],"relativePath":"ssr/nuxt.md","filePath":"ssr/nuxt.md"}'),p={name:"ssr/nuxt.md"},l=o("",31),e=[l];function t(c,r,i,y,F,d){return n(),a("div",null,e)}const h=s(p,[["render",t]]);export{E as __pageData,h as default};

@@ -1,0 +1,169 @@
+extends ../layouts/basic
+
+block variablesLang
+    include ./_variablesLang.jade
+
+block extra_head
+    title Apache ECharts
+    script(src="/fastly.jsdelivr.net/npm/scrollreveal@4.0.7/dist/scrollreveal.min.js")
+    script(src="/fastly.jsdelivr.net/npm/lottie-web@5.7.6/build/player/lottie.min.js")
+
+block content
+    nav(class='navbar navbar-default navbar-fixed-top', role="navigation")
+        include ./nav
+
+    .page-main#page-index
+        #main-content
+            section#home-section
+                .home-brand-panel.description.container
+                    .home-info
+                        .home-brand Apache ECharts
+                        .home-subtitle An Open Source JavaScript Visualization Library
+                        .home-btn-panel
+                            a.btn.btn-main.btn-index-home(href='#{host}/handbook/#{ecWWWLang}/get-started')
+                                include ../components/svg/index-learn
+                                span Get Started
+                            a.btn.btn-main.btn-index-home(href='#{host}/examples/#{ecWWWLang}/index.html')
+                                include ../components/svg/index-example
+                                span Demo
+                            a.btn.btn-main.btn-index-home.btn-index-github(href='https://github.com/apache/echarts', target='_blank')
+                                include ../components/svg/github
+                                +svgGithub('#081642')
+                    .home-landing-animation
+                        .home-landing-animation-cover
+                            include ../components/svg/entry-pie.svg
+                            #play-landing-animation
+                                include ../components/svg/play.svg
+                                .loading
+                                    include ../components/svg/loading.svg
+                        #home-landing-animation-container
+                            #home-landing-animation-viewport
+                            #home-landing-animation-close-btn
+                                include ../components/svg/close.svg
+
+            section#new-version-section 📣 Apache ECharts 5.4 is out! See <a href='#{host}/handbook/#{ecWWWLang}/basics/release-note/5-4-0?ref=banner' target='_blank'>what's new</a>
+
+            //- section#events-section
+            //-     .container
+            //-         a.event(href='https://apachecon.com/acasia2022/?ref=echarts', style="max-width: 1000px; margin: 15px auto")
+            //-             picture
+            //-                 source.lazy(data-srcset="#{cdnPayRoot}/#{ecWWWLang}/images/event/20220509-acasia2022.webp?_v_=#{cdnPayVersion}", type="image/webp")
+            //-                 img.lazy(data-srcset="#{cdnPayRoot}/#{ecWWWLang}/images/event/20220509-acasia2022.png?_v_=#{cdnPayVersion}", type="image/png", style="width: 100%")
+            //-                 //- img.lazy(data-src="#{cdnPayRoot}/#{ecWWWLang}/images/event/20210705-apachecon-en.jpeg?_v_=#{cdnPayVersion}", alt="ApacheCon Asia 2021")
+
+            section#feature-section
+                .container
+                    .index-features
+                        h2.reveal Features
+                        hr.reveal
+                        a.more.reveal(href='#{host}/#{ecWWWLang}/feature.html') View More
+                    .row
+                        .col-md-6
+                            .index-feature#index-feature-1
+                                .index-feature-left.reveal
+                                    .index-feature-icon-bg#bg-icon-1
+                                    .index-feature-icon#icon-1
+                                .index-feature-right.reveal
+                                    h3.reveal Flexible Chart Types
+                                    p.reveal-later Apache ECharts provides more than 20 chart types available out of the box, along with a dozen components, and each of them can be arbitrarily combined to use.
+                        .col-md-6
+                            .index-feature#index-feature-2
+                                .index-feature-left.reveal
+                                    .index-feature-icon-bg#bg-icon-2
+                                    .index-feature-icon#icon-2
+                                .index-feature-right
+                                    h3.reveal Powerful Rendering Engine
+                                    p.reveal-later Easily switch between Canvas and SVG rendering. Progressive rendering and stream loading make it possible to render 10 million data in realtime.
+                        .col-md-6
+                            .index-feature#index-feature-3
+                                .index-feature-left.reveal
+                                    .index-feature-icon-bg#bg-icon-3
+                                    .index-feature-icon#icon-3
+                                .index-feature-right
+                                    h3.reveal Professional Data Analysis
+                                    p.reveal-later Manage data through datasets, which support data transforms like filtering, clustering, and regression to help analyze multi-dimensional analysis of the same data.
+                        .col-md-6
+                            .index-feature#index-feature-4
+                                .index-feature-left.reveal
+                                    .index-feature-icon-bg#bg-icon-4
+                                    .index-feature-icon#icon-4
+                                .index-feature-right
+                                    h3.reveal Elegant Visual Design
+                                    p.reveal-later The default design follows visualization principles, supports responsive design. Flexible configurations make it easy to customize.
+                        .col-md-6
+                            .index-feature#index-feature-5
+                                .index-feature-left.reveal
+                                    .index-feature-icon-bg#bg-icon-5
+                                    .index-feature-icon#icon-5
+                                .index-feature-right
+                                    h3.reveal A Healthy Community
+                                    p.reveal-later The active open source community ensures the healthy development of the project and contributes a wealth of third-party extensions.
+                        .col-md-6
+                            .index-feature#index-feature-6
+                                .index-feature-left.reveal
+                                    .index-feature-icon-bg#bg-icon-6
+                                    .index-feature-icon#icon-6
+                                .index-feature-right
+                                    h3.reveal Accessibility-Friendly
+                                    p.reveal-later Automatically generated chart descriptions and decal patterns help users with disabilities understand the content and the stories behind the charts.
+            section#publication
+                .container
+                    #start-line
+                    .paper
+                        .content
+                            h2.reveal-latest ECharts: A Declarative Framework for Rapid Construction of Web-based Visualization
+                            p.note.reveal-latest You are welcomed to cite the following paper whenever you use ECharts in your R&D projects, products, research papers, technical reports, news reports, books, presentations, teaching, patents, and other related intelligence activities.
+                            .single-btn-panel.reveal-latest
+                                a(href="https://www.sciencedirect.com/science/article/pii/S2468502X18300068").pdf.reveal-later Visual Informatics, 2018 [PDF]
+                        .icon
+                            #paper-icon
+                    #end-line
+            section.normal#about-section.reveal-about
+                .container
+                    h3 Follow
+                    hr
+                    p Follow us to get more updates in time.
+                    .btn-panel.row
+                        .col-lg-3.col-sm-6
+                            a#btn-github(href='https://github.com/apache/echarts')
+                                .btn-content
+                                    .btn-logo
+                                        include ../components/svg/github
+                                        +svgGithub('#081642')
+                                        span GitHub
+                                    .icon-v-right
+
+                        .col-lg-3.col-sm-6
+                            a#btn-weixin
+                                .btn-content.zh
+                                    .btn-logo
+                                        include ../components/svg/wechart
+                                        span Wechat
+                                    .weixin-code
+                                        img(src="images/ercode.jpg")
+
+                        .col-lg-3.col-sm-6
+                            a#btn-weibo(href='https://weibo.com/echarts')
+                                .btn-content
+                                    .btn-logo
+                                        include ../components/svg/weibo
+                                        span Weibo
+                                    .icon-v-right
+
+                        .col-lg-3.col-sm-6
+                            a#btn-twitter(href='https://twitter.com/ApacheECharts')
+                                .btn-content
+                                    .btn-logo
+                                        include ../components/svg/twitter
+                                        span &nbsp;
+                                    .icon-v-right
+        include ./footer
+
+block extra_js
+    script(type='text/javascript').
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy"
+        };
+    script(src='/fastly.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js')
+    script(src='#{cdnPayRoot}/#{ecWWWLang}/js/index.js?_v_=#{homeVersion}')
+    //- <script async defer src="https://buttons.github.io/buttons.js"></script>

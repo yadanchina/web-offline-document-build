@@ -1,0 +1,1 @@
+import{_ as a,o as e,c as t,S as i}from"./chunks/framework.7ffc5276.js";const u=JSON.parse('{"title":"API 文档","description":"","frontmatter":{},"headers":[],"relativePath":"zh/api/index.md","filePath":"zh/api/index.md"}'),n={name:"zh/api/index.md"},o=i("",4),l=[o];function s(d,r,_,c,h,p){return e(),t("div",null,l)}const f=a(n,[["render",s]]);export{u as __pageData,f as default};

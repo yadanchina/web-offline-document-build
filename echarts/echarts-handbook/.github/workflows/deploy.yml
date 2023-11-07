@@ -1,0 +1,44 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+        #with:
+          # for generating contributors from all commit histories
+          # Not using git log currently
+          # fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install and Build 🔧
+        run: |
+          npm install
+          npm run build:gh
+
+      # - name: Prepare deploy action
+      #   # Needs install webpack@5 to avoid using the webpack@4 in the workspace.
+      #   run: |
+      #     npm install
+      #     npm install webpack@5
+      #     npm run build
+      #   working-directory: .github/actions/github-pages-deploy-action
+
+      - name: Deploy 🚀
+        uses: ./node_modules/@jamesives/github-pages-deploy-action
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist
+          target-folder: docs
+          single-commit: true
+          clean: true

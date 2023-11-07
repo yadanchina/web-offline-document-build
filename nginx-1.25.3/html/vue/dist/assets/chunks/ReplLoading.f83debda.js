@@ -1,0 +1,1 @@
+import{_ as s,y as i,S as d,L as r}from"./framework.0ed1d5d2.js";const a={},n={class:"repl-loading"},l=[r("div",{class:"lds-ring"},[r("div"),r("div"),r("div"),r("div")],-1),r("div",null,"Repl is loading...",-1)];const o=s(a,[["render",function(s,r){return i(),d("div",n,l)}]]);export{o as R};

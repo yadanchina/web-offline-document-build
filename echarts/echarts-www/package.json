@@ -1,0 +1,38 @@
+{
+  "name": "echarts-www",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "build": "bash bin/release.sh --env=localsite",
+    "localsite": "bash bin/release.sh --env=localsite",
+    "release": "bash -e -u -o pipefail bin/release.sh --env asf",
+    "dev:all": "npm run localsite",
+    "dev": "node bin/build.js --env=localsite",
+    "jade": "node bin/build.js --env=localsite --filter=jade",
+    "sass": "node bin/build.js --env=localsite --filter=sass",
+    "js": "node bin/build.js --env=localsite --filter=js",
+    "watch": "npm run watch:jade & npm run watch:sass & npm run watch:js",
+    "create:page": "node bin/createPage.js",
+    "watch:jade": "onchange '_jade/**/*' -- node bin/build.js --env=localsite --filter=jade --jade={{changed}}",
+    "watch:sass": "onchange '_scss/**/*' -- npm run sass",
+    "watch:js": "onchange 'js/*.js' -- npm run js"
+  },
+  "devDependencies": {
+    "@babel/core": "7.23.2",
+    "autoprefixer": "^9.7.3",
+    "chalk": "^3.0.0",
+    "fs-extra": "^11.1.0",
+    "globby": "^11.1.0",
+    "jade": "^1.11.0",
+    "less": "^3.10.3",
+    "md5": "^2.3.0",
+    "node-sass": "^7.0.0",
+    "onchange": "^6.1.0",
+    "postcss": "^7.0.25",
+    "requirejs": "^2.3.6",
+    "shelljs": "^0.8.5",
+    "uglify-js": "^3.17.4",
+    "yargs": "^13.2.4"
+  }
+}
