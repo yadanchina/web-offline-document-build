@@ -66,7 +66,8 @@ export default {
       'useDirtyRect' in URL_PARAMS && hash.push('useDirtyRect=1');
       URL_PARAMS.renderer && hash.push('renderer=' + URL_PARAMS.renderer);
       // return './editor.html?' + hash.join('&');
-      return './zh/editor?' + hash.join('&');
+      return './editor.html?' + hash.join('&'); // nginx
+      // return './zh/editor?' + hash.join('&'); //
     },
 
     exampleThumbFilePath() {

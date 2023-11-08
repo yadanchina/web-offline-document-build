@@ -31,6 +31,7 @@ examplesProjectDir="${wwwProjectDir}/../echarts-examples";
 handbookProjectDir="${wwwProjectDir}/../echarts-handbook";
 websiteTargetDir="${wwwProjectDir}/../echarts-website";
 themeProjectDir="${wwwProjectDir}/../echarts-theme-builder";
+static_dir="${wwwProjectDir}/../echarts-website-static";
 
 cd ${wwwProjectDir}
 
@@ -99,4 +100,6 @@ cp -R ${handbookProjectDir}/dist ${websiteTargetDir}/handbook
 echo "Build handbook done."
 
 
-echo "echarts-www release done for ${envType}"
+
+
+
